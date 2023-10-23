@@ -1,0 +1,46 @@
+version: '3.9'
+
+services:
+  zookeeper:
+    image: zookeeper:3.9
+    container_name: zookeeper_ch
+    hostname: zookeeper
+
+  clickhouse-node1:
+    image: clickhouse/clickhouse-server:23.8.4.69-alpine
+    container_name: src-node1
+    hostname: src-node1
+    ports:
+      - "8123:8123"
+      - "9000:9000"
+    volumes:
+      - clickhouse_node_1_data:/home/data
+    depends_on:
+      - zookeeper
+
+  clickhouse-node2:
+    image: clickhouse/clickhouse-server:23.8.4.69-alpine
+    container_name: src-node2
+    hostname: src-node2
+    volumes:
+      - clickhouse_node_2_data:/home/data
+    depends_on:
+      - zookeeper
+
+  clickhouse-node3:
+    image: clickhouse/clickhouse-server:23.8.4.69-alpine
+    container_name: src-node3
+    hostname: src-node3
+    volumes:
+      - clickhouse_node_3_data:/home/data
+    depends_on:
+      - zookeeper
+
+  clickhouse-node4:
+    image: clickhouse/clickhouse-server:23.8.4.69-alpine
+    container_name: src-node4
+    hostname: src-node4
+    volumes:
+      - clickhouse_node_4_data:/home/data
+    depends_on:
+      - zookeeper
