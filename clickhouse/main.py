@@ -2,6 +2,7 @@ from clickhouse_driver import Client
 
 client = Client(host='localhost')
 
+
 def get_clusters():
     full_clusters_query = 'SELECT * FROM system.clusters;'
     full_clusters = client.execute(full_clusters_query)
