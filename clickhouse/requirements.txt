@@ -1,0 +1,6 @@
+clickhouse-driver==0.2.6
+pip==23.2.1
+pytz==2023.3.post1
+setuptools==68.1.2
+tzlocal==5.1
+wheel==0.41.2
